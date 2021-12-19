@@ -11,7 +11,10 @@ A foray into the cousin of ReactJS. React-Native! Once again "hello world" but f
 ```npm start ```
 
 ## Step 4: Access the app
-Go to ```http://localhost:19006```
+Go to [http://localhost:19006](http://localhost:19006)
 
 ## Step 5: Access bundle 
-Go to ```[http://localhost:19002](http://localhost:19002)```
+Go to [http://localhost:19002](http://localhost:19002)
+
+## Step 6: Access debugger 
+Go to [http://localhost:19001](http://localhost:19001)
