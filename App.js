@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
-import Cat from './websocket/websocket';
+import Cat from './websocket/roswebsocket';
 
 
 export default function App() {
