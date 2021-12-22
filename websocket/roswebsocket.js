@@ -4,7 +4,8 @@ import {
     Button,
     View,
     TextInput,
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native';
 import * as ROSLIB from 'roslib'
 
@@ -18,7 +19,7 @@ export default class Cat extends Component {
 
         this.pub = 0
 
-        this.initialised  = false;
+        this.initialised = false;
     }
 
     forward = () => {
@@ -159,6 +160,9 @@ export default class Cat extends Component {
     render() {
         return (
             <>
+                <Image
+                    style={{ width: 200, height: 200 }}
+                    source={require('../Images/test_image.jpg')} />
                 <Text>Control the robot</Text>
                 <TextInput
                     style={this.styles.input}
