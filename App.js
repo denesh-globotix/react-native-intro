@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import Cat from './websocket/websocket';
+
 
 export default function App() {
   return (
@@ -12,6 +14,7 @@ export default function App() {
           Alert.alert("You clicked me!")
         }}
       />
+      <Cat />
       <StatusBar style="auto" />
     </View>
   );
