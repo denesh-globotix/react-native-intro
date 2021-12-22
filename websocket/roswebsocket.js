@@ -12,24 +12,19 @@ export default class Cat extends Component {
     constructor() {
         super()
         this.robot_ip = "192.168.1.25"
-        this.ros = new ROSLIB.Ros({
-            url: `ws://${this.robot_ip}:9090`
-        });
+        this.ros = 0
 
         this.number = 0;
 
-        this.ros.on('connection', function () {
-            console.log('Connected to websocket server.');
-        });
+        this.pub = 0
 
-        this.pub = new ROSLIB.Topic({
-            ros: this.ros,
-            name: '/cmd_vel',
-            messageType: 'geometry_msgs/Twist'
-        })
+        this.initialised  = false;
     }
 
     forward = () => {
+        if (this.initialised === false) {
+            return;
+        }
         console.log("hello forwards")
         this.twist = new ROSLIB.Message({
             linear: {
@@ -48,6 +43,9 @@ export default class Cat extends Component {
     }
 
     backward = () => {
+        if (this.initialised === false) {
+            return;
+        }
         console.log("hello backwards")
         this.twist = new ROSLIB.Message({
             linear: {
@@ -66,6 +64,9 @@ export default class Cat extends Component {
     }
 
     right = () => {
+        if (this.initialised === false) {
+            return;
+        }
         this.twist = new ROSLIB.Message({
             linear: {
                 x: 0.0,
@@ -83,6 +84,9 @@ export default class Cat extends Component {
     }
 
     left = () => {
+        if (this.initialised === false) {
+            return;
+        }
         this.twist = new ROSLIB.Message({
             linear: {
                 x: 0.0,
@@ -100,6 +104,9 @@ export default class Cat extends Component {
     }
 
     stop = () => {
+        if (this.initialised === false) {
+            return;
+        }
         this.twist = new ROSLIB.Message({
             linear: {
                 x: 0.0,
@@ -117,7 +124,13 @@ export default class Cat extends Component {
     }
 
     connected = () => {
+        this.initialised = true;
         console.log("Connected to the robot")
+        this.pub = new ROSLIB.Topic({
+            ros: this.ros,
+            name: '/cmd_vel',
+            messageType: 'geometry_msgs/Twist'
+        })
     }
 
     connect = () => {
