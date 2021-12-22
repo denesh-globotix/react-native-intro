@@ -21,8 +21,8 @@ export default class Cat extends Component {
         })
     }
 
-    Topic_mode = () => {
-
+    forward = () => {
+        console.log("hello forwards")
         this.twist = new ROSLIB.Message({
             linear: {
                 x: 1.0,
@@ -32,7 +32,76 @@ export default class Cat extends Component {
             angular: {
                 x: 0.0,
                 y: 0.0,
-                z: 0.5,
+                z: 0.0,
+            },
+        })
+
+        this.pub.publish(this.twist)
+    }
+
+    backward = () => {
+        console.log("hello backwards")
+        this.twist = new ROSLIB.Message({
+            linear: {
+                x: -0.2,
+                y: 0.0,
+                z: 0.0
+            },
+            angular: {
+                x: 0.0,
+                y: 0.0,
+                z: 0.0,
+            },
+        })
+
+        this.pub.publish(this.twist)
+    }
+
+    right = () => {
+        this.twist = new ROSLIB.Message({
+            linear: {
+                x: 0.0,
+                y: 0.0,
+                z: 0.0
+            },
+            angular: {
+                x: 0.0,
+                y: 0.0,
+                z: -0.3,
+            },
+        })
+
+        this.pub.publish(this.twist)
+    }
+
+    left = () => {
+        this.twist = new ROSLIB.Message({
+            linear: {
+                x: 0.0,
+                y: 0.0,
+                z: 0.0
+            },
+            angular: {
+                x: 0.0,
+                y: 0.0,
+                z: 0.3,
+            },
+        })
+
+        this.pub.publish(this.twist)
+    }
+
+    stop = () => {
+        this.twist = new ROSLIB.Message({
+            linear: {
+                x: 0.0,
+                y: 0.0,
+                z: 0.0
+            },
+            angular: {
+                x: 0.0,
+                y: 0.0,
+                z: 0.0,
             },
         })
 
@@ -42,11 +111,35 @@ export default class Cat extends Component {
     render() {
         return (
             <>
-                <Text>Hello, I am your cat!</Text>
+                <Text>Control the robot</Text>
                 <Button
-                    title="Send ROS Message"
+                    title="Forward"
                     accessibilityLabel="Learn more about this purple button"
-                    onPress={this.Topic_mode}
+                    onPress={this.forward}
+                >
+                </Button>
+                <Button
+                    title="Backward"
+                    accessibilityLabel="Learn more about this purple button"
+                    onPress={this.backward}
+                >
+                </Button>
+                <Button
+                    title="Right"
+                    accessibilityLabel="Learn more about this purple button"
+                    onPress={this.right}
+                >
+                </Button>
+                <Button
+                    title="Left"
+                    accessibilityLabel="Learn more about this purple button"
+                    onPress={this.left}
+                >
+                </Button>
+                <Button
+                    title="stop"
+                    accessibilityLabel="Learn more about this purple button"
+                    onPress={this.stop}
                 >
                 </Button>
             </>

@@ -6,14 +6,6 @@ import Cat from './websocket/websocket';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <Button
-        title="Learn More"
-        accessibilityLabel="Learn more about this purple button"
-        onPress={() => {
-          Alert.alert("You clicked me!")
-        }}
-      />
       <Cat />
       <StatusBar style="auto" />
     </View>
