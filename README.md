@@ -21,6 +21,9 @@ Go to [http://localhost:19002](http://localhost:19002)
 ### Step 6: Access debugger 
 Go to [http://localhost:19001](http://localhost:19001)
 
+### Step 7: Access mobile UI debugger 
+Go to [http://localhost:19000/debugger-ui/](http://localhost:19000/debugger-ui/)
+
 
 ## Using this repository
 
